@@ -1,0 +1,50 @@
+/**
+ * @file linker.h
+ *
+ * @date 23.06.2019
+ * @author twatorowski (tw@mightydevices.com)
+ *
+ * @brief Linker defined symbols
+ */
+
+#ifndef LINKER_H_
+#define LINKER_H_
+
+#include <stdint.h>
+
+/* basic memory layout: SRAM */
+extern uintptr_t __sram_size, __sram_addr;
+/* basic memory layout: FLASH */
+extern uintptr_t __flash_size, __flash_addr;
+/* basic memory layout: NVC */
+extern uintptr_t __nvc_addr, __nvc_end;
+
+
+/* initial stack pointer */
+extern uintptr_t __stack;
+
+/* flash vectors address */
+extern uintptr_t __flash_vectors;
+/* total code size and it's initial position */
+extern uintptr_t __flash_code_addr, __flash_code_size;
+/* complete flash image size (code + data initializers) */
+extern uintptr_t __flash_image_size;
+
+/* data initialization by flash stored data */
+/* source and destination address */
+extern uintptr_t __flash_sram_init_src_addr, __flash_sram_init_dst_addr;
+/* size */
+extern uintptr_t __flash_sram_init_size;
+
+/* data initialization by zeroing out */
+/* bss section */
+extern uintptr_t __bss_addr, __bss_size;
+
+/* image header stuff */
+/* address of the header and the checksum section */
+extern uintptr_t __image_header_addr, __image_checksum_addr;
+/* offset between the two above */
+extern uintptr_t __image_checksum_offs;
+
+
+#endif /* LINKER_H_ */
