@@ -31,4 +31,6 @@ SECTION(".flash_vectors") vector_entry_t flash_vectors[] = {
     /* exception vectors */
     /* reset vector */
     SET_EXC_VEC(STM32_EXC_RESET, Startup_ResetHandler),
+    /* hard-fault */
+    SET_EXC_VEC(STM32_EXC_HARDFAULT, DefHndl_DefaultHandler),
 };
