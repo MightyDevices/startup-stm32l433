@@ -28,9 +28,9 @@ Two things are needed:
 
 Building using GCC: 
 ```
-make BT=gcc all
+make TOOLCHAIN=gcc all
 ```
 Builing using LLVM: 
 ```
-make BT=llvm all
+make TOOLCHAIN=llvm all
 ```

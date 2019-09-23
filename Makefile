@@ -64,31 +64,31 @@ endif
 
 # ------------------------- BUILD TOOLS -----------------------------
 # build tools (set to 'gcc' or 'llvm')
-BT = gcc
+TOOLCHAIN = gcc
 # proper system path for selected build tools (leave empty if these are in 
 # system PATH)
-BT_PATH =
+TOOLCHAIN_PATH =
 
 # build tools for the clang/llvm approach
-ifeq ($(BT),llvm)
-    CC = $(BT_PATH)clang
-    AS = $(BT_PATH)clang
-    LD = $(BT_PATH)ld
-    OBC = $(BT_PATH)llvm-objcopy
-    OBD = $(BT_PATH)llvm-objdump
-    NM = $(BT_PATH)llvm-nm
-    SIZE = $(BT_PATH)llvm-size
+ifeq ($(TOOLCHAIN),llvm)
+    CC = $(TOOLCHAIN_PATH)clang
+    AS = $(TOOLCHAIN_PATH)clang
+    LD = $(TOOLCHAIN_PATH)ld
+    OBC = $(TOOLCHAIN_PATH)llvm-objcopy
+    OBD = $(TOOLCHAIN_PATH)llvm-objdump
+    NM = $(TOOLCHAIN_PATH)llvm-nm
+    SIZE = $(TOOLCHAIN_PATH)llvm-size
 endif
 
 # buildtools for the gcc approach
-ifeq ($(BT),gcc)
-    CC = $(BT_PATH)arm-none-eabi-gcc
-    AS = $(BT_PATH)arm-none-eabi-gcc
-    LD = $(BT_PATH)arm-none-eabi-ld
-    OBC = $(BT_PATH)arm-none-eabi-objcopy
-    OBD = $(BT_PATH)arm-none-eabi-objdump
-    NM = $(BT_PATH)arm-none-eabi-nm
-    SIZE = $(BT_PATH)arm-none-eabi-size
+ifeq ($(TOOLCHAIN),gcc)
+    CC = $(TOOLCHAIN_PATH)arm-none-eabi-gcc
+    AS = $(TOOLCHAIN_PATH)arm-none-eabi-gcc
+    LD = $(TOOLCHAIN_PATH)arm-none-eabi-ld
+    OBC = $(TOOLCHAIN_PATH)arm-none-eabi-objcopy
+    OBD = $(TOOLCHAIN_PATH)arm-none-eabi-objdump
+    NM = $(TOOLCHAIN_PATH)arm-none-eabi-nm
+    SIZE = $(TOOLCHAIN_PATH)arm-none-eabi-size
 endif
 
 # ------------------------ PREPARE PATHS ----------------------------
@@ -117,7 +117,7 @@ CC_FLAGS += $(OPT_LEVEL) --std=c18
 CC_FLAGS  = -mcpu=cortex-m4 -march=armv7e-m -mthumb $(OPT_LEVEL)
 CC_FLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 # additional architecture flags for clang/llvm
-ifeq ($(BT),llvm)
+ifeq ($(TOOLCHAIN),llvm)
     CC_FLAGS += --target=thumbv7em-unknown-none-eabihf
 endif
 # warning levels
