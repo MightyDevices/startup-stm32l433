@@ -23,7 +23,7 @@ SRC += ./startup.c ./vectors.c ./defhndl.c ./image.c ./main.c
 
 # ----------------------------- INCLUDES ----------------------------
 # put all used include directories here (use / as path separator)
-INC_DIRS = . ./stm32l433cbu6
+INC_DIRS = .
 
 # ---------------------------- LIBRARIES ----------------------------
 # put all used libraries here starting with 'l[name]', like lm
