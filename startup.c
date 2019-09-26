@@ -14,7 +14,7 @@
 #include "compiler.h"
 
 /* main program routine */
-extern int main(void);
+extern int Main(void);
 
 /* copy a memory section */
 static void Startup_CopySection(void *dst, const void *src, size_t size)
@@ -56,12 +56,15 @@ static void Startup_ZeroSection(void *ptr, size_t size)
  * to it's default state */
 void SECTION(".flash_code") Startup_ResetHandler(void)
 {
+    /* initialize ram functions */
+    Startup_CopySection(&__ram_code_addr, &__flash_sram_init_src_addr, 
+        (size_t)&__ram_code_size);
     /* initialize data */
-    Startup_CopySection(&__flash_sram_init_dst_addr, 
-		&__flash_sram_init_src_addr, (size_t)&__flash_sram_init_size);
+    Startup_CopySection(&__data_addr,  (uint8_t *)&__flash_sram_init_src_addr + 
+        (size_t)&__ram_code_size, (size_t)&__data_size);
     /* zero out the bss */
 	Startup_ZeroSection(&__bss_addr, (size_t)&__bss_size);
 
 	/* jump to main program routine */
-	main();
+	Main();
 }

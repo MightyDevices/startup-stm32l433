@@ -9,7 +9,7 @@
 
 /* program main function, must return int so that gcc does not complain in 
  * pedantic mode (-Wmain) */
-int main(void)
+int Main(void)
 {
 
 	/* execution loop */

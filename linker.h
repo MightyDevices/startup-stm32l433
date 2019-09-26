@@ -16,8 +16,6 @@
 extern uintptr_t __sram_size, __sram_addr;
 /* basic memory layout: FLASH */
 extern uintptr_t __flash_size, __flash_addr;
-/* basic memory layout: NVC */
-extern uintptr_t __nvc_addr, __nvc_end;
 
 
 /* initial stack pointer */
@@ -31,10 +29,12 @@ extern uintptr_t __flash_code_addr, __flash_code_size;
 extern uintptr_t __flash_image_size;
 
 /* data initialization by flash stored data */
-/* source and destination address */
-extern uintptr_t __flash_sram_init_src_addr, __flash_sram_init_dst_addr;
+/* source address */
+extern uintptr_t __flash_sram_init_src_addr;
+/* destination addresses inside the sections */
+extern uintptr_t __ram_code_addr, __data_addr;
 /* size */
-extern uintptr_t __flash_sram_init_size;
+extern uintptr_t __ram_code_size, __data_size;
 
 /* data initialization by zeroing out */
 /* bss section */
