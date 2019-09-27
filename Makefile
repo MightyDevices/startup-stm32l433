@@ -119,10 +119,11 @@ CC_FLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 # additional architecture flags for clang/llvm
 ifeq ($(TOOLCHAIN),llvm)
     CC_FLAGS += --target=thumbv7em-unknown-none-eabihf
+    CC_FLAGS += -Wno-keyword-macro
 endif
 # warning levels
 CC_FLAGS += -g -fdata-sections -ffunction-sections
-CC_FLAGS += -Wall -Wextra -Wdouble-promotion -Wno-keyword-macro
+CC_FLAGS += -Wall -Wno-format
 CC_FLAGS += -pedantic-errors -Wno-implicit-fallthrough
 # use defines such as M_PI from math.h
 CC_FLAGS += -D _USE_MATH_DEFINES
